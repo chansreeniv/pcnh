@@ -1,1 +1,17 @@
-<p>results works!</p>
+<div class="card-group">
+        <div *ngIf="!notFound; else found">
+            <div class="card-body">
+                <h5 class="card-title">Generate New UHID</h5>
+                <button class="btn btn-primary">Generate</button>
+            </div>
+        </div>
+        <ng-template #found>
+            <div class="card-body" *ngFor="let res of responseData">
+                <h4 class="card-title">UHID: {{res.uhid}}</h4>
+                <h5 class="card-text">Name: {{res.name}}</h5>
+                <h6 class="card-text">Age: {{res.age}}  Sex: {{res.sex}}</h6>
+                <p class="card-text">Last Visit:  {{res.lastVisit}}</p>
+                <a href="#" class="btn btn-primary">Revisit</a>
+            </div>
+        </ng-template>
+</div>
