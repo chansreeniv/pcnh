@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 import { ConfigService } from '../services/config.service';
 
 @Component({
@@ -10,12 +12,10 @@ export class NavbarComponent implements OnInit {
   navLogin: string = "nav-link";
   navSearch: string = "nav-link";
 
-  constructor(private configService: ConfigService) { }
+  constructor(private configService: ConfigService, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
-    this.navLogin= "nav-link";
-    this.navSearch = "nav-link";
-    this.configService.getConfig().subscribe((response)=>{console.log(response)});
+    // this.configService.getConfig().subscribe((response)=>{console.log(response)});
   }
 
   onLogin(){
@@ -24,6 +24,11 @@ export class NavbarComponent implements OnInit {
 
   onSearch(){
     this.navSearch = "nav-link active"
+  }
+
+  onLogout(){
+    this.authService.logout();
+    this.router.navigate(['/']);
   }
 
   // onDeactivate(){

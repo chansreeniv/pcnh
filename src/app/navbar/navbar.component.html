@@ -1,12 +1,37 @@
-<div class="card text-center">
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="/">Home</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarText">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" routerLink="login" routerLinkActive="active">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="search" routerLinkActive="active">Search</a>
+      </li>
+      <li class="nav-item">
+        <button class="btn btn-outline-success my-2 my-sm-0" (click)="onLogout()">Logout</button>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+
+
+
+<!-- <div class="card">
+  <div class="card text-center">
     <div class="card-header">
       <ul class="nav nav-tabs card-header-tabs">
         <li class="nav-item">
-          <a class={{navLogin}} href="#" (click)="onLogin()">Login</a>
+          <a class="nav-link" routerLink="login" routerLinkActive="active">Login</a>
         </li>
         <li class="nav-item">
-          <a class={{navSearch}} href="#" (click)="onSearch()">Search</a>
+          <a class="nav-link" routerLink="search" routerLinkActive="active">Search</a>
         </li>
       </ul>
     </div>
   </div>
+</div> -->

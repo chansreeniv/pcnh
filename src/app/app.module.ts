@@ -8,6 +8,10 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { SearchComponent } from './search/search.component';
 import { LoginComponent } from './login/login.component';
 import { ResultsComponent } from './results/results.component'; 
+import { AppRoutingModule } from './app-routing.module';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -16,12 +20,15 @@ import { ResultsComponent } from './results/results.component';
     NavbarComponent,
     SearchComponent,
     LoginComponent,
-    ResultsComponent
+    ResultsComponent,
+    PageNotFoundComponent,
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     BrowserAnimationsModule,
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

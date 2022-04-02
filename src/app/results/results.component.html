@@ -2,7 +2,12 @@
         <div *ngIf="!notFound; else found">
             <div class="card-body">
                 <h5 class="card-title">Generate New UHID</h5>
-                <button class="btn btn-primary">Generate</button>
+                <button class="btn btn-primary" (click)="onGenerate()">Generate</button>
+            </div>
+            <div class="card-body">
+                <div class="card-title">
+                    <h4>{{generatedUHID}}</h4>
+                </div>
             </div>
         </div>
         <ng-template #found>
@@ -11,7 +16,8 @@
                 <h5 class="card-text">Name: {{res.name}}</h5>
                 <h6 class="card-text">Age: {{res.age}}  Sex: {{res.sex}}</h6>
                 <p class="card-text">Last Visit:  {{res.lastVisit}}</p>
-                <a href="#" class="btn btn-primary">Revisit</a>
+                <a [routerLink]="[res.uhid]" routerLinkActive="active" class="btn btn-primary">Revisit</a>
             </div>
         </ng-template>
+        <!-- <router-outlet></router-outlet> -->
 </div>

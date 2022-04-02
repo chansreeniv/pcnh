@@ -1,11 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, Params } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { GenerateService } from '../services/generate.service';
 
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
   styleUrls: ['./results.component.css']
 })
-export class ResultsComponent implements OnInit {
+export class ResultsComponent implements OnInit, OnDestroy {
+  paramSubscription: Subscription = new Subscription;
+  generatedUHID: string = '';
+  
   responseData = [{
     "uhid":"20221001",
     "name": "Alpha",
@@ -22,11 +28,21 @@ export class ResultsComponent implements OnInit {
     "lastVisit":"12-1-2022 11:00a.m",
   }]
 
-  notFound = true;
+  notFound = false;
 
-  constructor() { }
+  constructor(private route: ActivatedRoute, private genrateService: GenerateService) { }
 
   ngOnInit(): void {
+    this.paramSubscription = this.route.params.subscribe((res: Params)=>{console.log(res)})
+  }
+
+  onGenerate(){
+    this.generatedUHID = this.genrateService.generateUHID()
+    console.log(this.generatedUHID);
+  }
+
+  ngOnDestroy(): void {
+    this.paramSubscription.unsubscribe();
   }
 
 

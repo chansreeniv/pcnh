@@ -1,35 +1,32 @@
 <div class="card text-center">
     <div class="card-body">
-        <form action="search-uhid" method="post">
+        <form (ngSubmit)="onSubmit(f)" #f="ngForm">
             <div class="row">
                 <div class="col">
-                    <input type="text" class="form-control" placeholder="UHID" aria-label="UHID">
+                    <input type="text" class="form-control" ngModel name="UHID" placeholder="UHID" aria-label="UHID">
                   </div>
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="First name" aria-label="First name">
+                  <input type="text" class="form-control" ngModel name="firstname" required placeholder="First name" aria-label="First name">
                 </div>
                 <div class="col">
-                  <input type="text" class="form-control" placeholder="Age" aria-label="Age">
+                  <input type="text" class="form-control" ngModel name="age" required placeholder="Age" aria-label="Age">
                 </div>
                   <div class="col">
-                    <select id="sex" class="form-select">
+                    <select id="sex" class="form-select" ngModel name="sex" placeholder="Sex" aria-label="Sex">
                         <option selected>Choose...</option>
                         <option>Male</option>
                         <option>Female</option>
-                        <option>Pediatric</option>
-                        <option>Neonates</option>
                       </select>
                   </div>
                   <div class="col">
-                    <input type="text" class="form-control" placeholder="Phone no" aria-label="phone no">
+                    <input type="text" class="form-control" ngModel name="phone" placeholder="Phone no" aria-label="phone no">
                   </div>
                   <div class="col">
-                      <button class="btn btn-primary" type="submit">Sumbit</button>
+                      <button class="btn btn-primary" type="submit" [disabled]="!f.valid">Search</button>
               </div>
             </div>
         </form>
-       
     </div>
 </div>
-<app-results></app-results>
 
+<router-outlet></router-outlet>
