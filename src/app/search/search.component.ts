@@ -3,6 +3,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ConfigService } from '../services/config.service';
 import { PatientData } from '../assets/patient.interface';
+import { StoreResponseService } from '../services/store-response.service';
 
 @Component({
   selector: 'app-search',
@@ -12,7 +13,11 @@ import { PatientData } from '../assets/patient.interface';
 export class SearchComponent implements OnInit {
   search: boolean = true;
   patientData!: PatientData;
-  constructor(private router: Router, private configService: ConfigService) {}
+  constructor(
+    private router: Router,
+    private configService: ConfigService,
+    private storeResponseService: StoreResponseService
+  ) {}
 
   ngOnInit(): void {}
   onSubmit(form: NgForm) {
@@ -21,14 +26,20 @@ export class SearchComponent implements OnInit {
       name: form.value.firstname,
       age: form.value.age,
       sex: form.value.sex,
-      mobile: form.value.phone
-    }
+      mobile: form.value.phone,
+    };
     // this.configService.createPatientData(this.patientData).subscribe(patientRes=>{console.log(patientRes)})
-    this.configService.searchPatientData(this.patientData.name).subscribe(res=>{console.log(res)});
+    this.configService
+      .searchPatientData(this.patientData.name)
+      .subscribe((res) => {
+        console.log(res);
+        if(res.length === 0 ){
+          console.log('res ponse true')
+          this.storeResponseService.createUHID(this.patientData);
+        }else {
+          this.storeResponseService.sortResponse(res);
+        }
+      });
     this.router.navigate(['search/results']);
   }
 }
-function patienData(patienData: any) {
-  throw new Error('Function not implemented.');
-}
-

@@ -11,12 +11,12 @@
             </div>
         </div>
         <ng-template #found>
-            <div class="card-body" *ngFor="let res of responseData">
-                <h4 class="card-title">UHID: {{res.uhid}}</h4>
+            <div class="card-body" *ngFor="let res of viewResponse">
+                <h4 class="card-title">UHID: {{res.UHID}}</h4>
                 <h5 class="card-text">Name: {{res.name}}</h5>
                 <h6 class="card-text">Age: {{res.age}}  Sex: {{res.sex}}</h6>
-                <p class="card-text">Last Visit:  {{res.lastVisit}}</p>
-                <a [routerLink]="[res.uhid]" routerLinkActive="active" class="btn btn-primary">Revisit</a>
+                <p class="card-text">Last Visit:  {{res.createdAt}}</p>
+                <a [routerLink]="[res.UHID]" routerLinkActive="active" class="btn btn-primary">Revisit</a>
             </div>
         </ng-template>
         <!-- <router-outlet></router-outlet> -->

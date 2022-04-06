@@ -33,6 +33,6 @@ export class ConfigService {
   searchPatientData(patientName: string){
     // const auth = new HttpHeaders({ 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDlkNDdjNzcyMDk3Zjc4YWMyYjliNyIsImlhdCI6MTY0OTAwNjQ4MCwiZXhwIjoxNjUxNTk4NDgwfQ._PW3BP9TYpzYhoad94MRe08mM4dmpHQNnBg8e7Rno7c'});
     // return this.http.get<PatientData>(`${environment.baseUrl}${ApiPaths.patients}${patientName}`,{headers: auth});
-    return this.http.get<PatientData>(`${environment.baseUrl}${ApiPaths.patients}${patientName}`);
+    return this.http.get<PatientData[]>(`${environment.baseUrl}${ApiPaths.patients}${patientName}`);
   }
 }

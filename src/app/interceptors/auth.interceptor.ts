@@ -15,10 +15,10 @@ export class AuthInterceptor implements HttpInterceptor {
   constructor() {}
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
-    
+    const token = localStorage.getItem('loginToken');
     const reqClone = request.clone({
       setHeaders:{
-        Authorization: `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYyNDlkNDdjNzcyMDk3Zjc4YWMyYjliNyIsImlhdCI6MTY0OTAwNjQ4MCwiZXhwIjoxNjUxNTk4NDgwfQ._PW3BP9TYpzYhoad94MRe08mM4dmpHQNnBg8e7Rno7c`
+        Authorization: `Bearer ${token}`
       }
     });
 
@@ -27,7 +27,6 @@ export class AuthInterceptor implements HttpInterceptor {
       return next.handle(request);
     }
 
-    console.log(reqClone);
     return next.handle(reqClone);
   }
 }
