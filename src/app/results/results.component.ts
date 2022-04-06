@@ -1,10 +1,10 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { subscribeOn, Subscription } from 'rxjs';
+import { map, subscribeOn, Subscription } from 'rxjs';
 import { PatientData } from '../assets/patient.interface';
 import { ConfigService } from '../services/config.service';
 import { GenerateService } from '../services/generate.service';
-import { StoreResponseService} from '../services/store-response.service';
+import { StoreResponseService } from '../services/store-response.service';
 
 @Component({
   selector: 'app-results',
@@ -50,33 +50,34 @@ export class ResultsComponent implements OnInit, OnDestroy {
     this.paramSubscription = this.route.params.subscribe((res: Params) => {
       console.log(res);
     });
-    this.createDbResponse = this.storeResponseService.createData.subscribe((createDataResponse)=>{
-      this.createUHID = createDataResponse;
-      console.log(createDataResponse)
-     });
-
-
-   this.databaseResponse = this.storeResponseService.dbResponse.subscribe((res) => {
-      // console.log(res)
-      this.viewResponse = res;
-      if(res.length !== 0){
-        this.notFound = true;
-      }else {
-        this.notFound = false;
+    this.createDbResponse = this.storeResponseService.createData.subscribe(
+      (createDataResponse) => {
+        this.createUHID = createDataResponse;
       }
-    });
+    );
+    this.databaseResponse = this.storeResponseService.dbResponse.subscribe(
+      (res) => {
+        // console.log(res)
+        this.viewResponse = res;
+        if (res.length !== 0) {
+          this.notFound = true;
+        } else {
+          this.notFound = false;
+        }
+      }
+    );
   }
 
   onGenerate() {
-    // this.generatedUHID = this.genrateService.generateUHID();
-    
-    this.configService.createPatientData(this.createUHID).subscribe(res =>{if(res){this.router.navigate(['/search'])}}) 
+    this.configService
+      .createPatientData(this.createUHID)
+      .subscribe()
   }
 
   ngOnDestroy(): void {
     this.paramSubscription.unsubscribe();
     this.createDbResponse.unsubscribe();
     this.databaseResponse.unsubscribe();
-    
+    this.notFound = false;
   }
 }

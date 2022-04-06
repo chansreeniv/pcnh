@@ -29,17 +29,23 @@ export class SearchComponent implements OnInit {
       mobile: form.value.phone,
     };
     // this.configService.createPatientData(this.patientData).subscribe(patientRes=>{console.log(patientRes)})
-    this.configService
-      .searchPatientData(this.patientData.name)
-      .subscribe((res) => {
-        console.log(res);
-        if(res.length === 0 ){
-          console.log('res ponse true')
-          this.storeResponseService.createUHID(this.patientData);
-        }else {
-          this.storeResponseService.sortResponse(res);
-        }
-      });
-    this.router.navigate(['search/results']);
+    this.searchPatientData(this.patientData)
+   
   }
+
+  searchPatientData(patientData: PatientData){
+    this.configService
+    .searchPatientData(patientData.name)
+    .subscribe((res) => {
+      if (res.length === 0) {
+        console.log('res ponse true');
+        this.storeResponseService.createUHID(patientData);
+      } else {
+        this.storeResponseService.sortResponse(res);
+      }
+    });
+  this.router.navigate(['search/results']);
+
+  }
+
 }
