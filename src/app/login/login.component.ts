@@ -29,9 +29,8 @@ export class LoginComponent implements OnInit {
   onRegister() {
     this.configService
       .register(this.signUpForm.value.username, this.signUpForm.value.password)
-      .subscribe((res) => {
-        console.log(res);
-      });
+      //should add catch error 
+      .subscribe();
   }
 
   onSubmit() {
