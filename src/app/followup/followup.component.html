@@ -1,0 +1,15 @@
+<form [formGroup]="followUpForm" (ngSubmit)="onSubmit()">
+    <div class="form-group">
+      <label for="UHID">UHID</label>
+      <input type="text" class="form-control" id="UHID"  placeholder={{this.UHID}} formControlName="UHID">
+    </div>
+    <div class="form-group">
+      <label for="consulting-doctor">Consulting Doctor</label>
+      <input type="text" class="form-control" id="consulting-doctor" placeholder="Consulting Doctor" formControlName="doctorName">
+    </div>
+    <div class="form-group">
+        <label for="consulting-doctor">Provisional Diagnosis</label>
+        <input type="text" class="form-control" id="provisional-diagnosis" placeholder="Provisional Diagnosis" formControlName="provisionalDiagnosis" >
+      </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>

@@ -12,9 +12,9 @@ import { ConfigService } from '../services/config.service';
 })
 export class LoginComponent implements OnInit {
   signUpForm!: FormGroup;
+  error = null;
 
   constructor(
-    private router: Router,
     private authService: AuthService,
     private configService: ConfigService
   ) {}
@@ -29,22 +29,23 @@ export class LoginComponent implements OnInit {
   onRegister() {
     this.configService
       .register(this.signUpForm.value.username, this.signUpForm.value.password)
-      //should add catch error 
+      //should add catch error
       .subscribe();
   }
 
   onSubmit() {
     console.log(this.signUpForm.value);
+    const observer = {
+      next: (res: any) => {
+        if (res) {
+          this.authService.login();
+        }
+      },
+      error: (error: any) => console.log((this.error = error.error.message)),
+    };
     this.configService
       .login(this.signUpForm.value.username, this.signUpForm.value.password)
-      .subscribe((user: UserData) => {
-        localStorage.setItem('loginToken', user.token);
-      });
-  }
-
-  onLogin() {
-    this.authService.login();
-    this.router.navigate(['search']);
+      .subscribe(observer);
   }
 
   onLogout() {

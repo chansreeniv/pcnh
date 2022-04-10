@@ -1,9 +1,8 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { map, subscribeOn, Subscription } from 'rxjs';
+import { Subscription } from 'rxjs';
 import { PatientData } from '../assets/patient.interface';
 import { ConfigService } from '../services/config.service';
-import { GenerateService } from '../services/generate.service';
 import { StoreResponseService } from '../services/store-response.service';
 
 @Component({
@@ -13,7 +12,7 @@ import { StoreResponseService } from '../services/store-response.service';
 })
 export class ResultsComponent implements OnInit, OnDestroy {
   paramSubscription: Subscription = new Subscription();
-  createDbResponse: Subscription = new Subscription();
+  createDbUHID: Subscription = new Subscription();
   databaseResponse: Subscription = new Subscription();
 
   generatedUHID: string = '';
@@ -40,7 +39,6 @@ export class ResultsComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private genrateService: GenerateService,
     private storeResponseService: StoreResponseService,
     private configService: ConfigService,
     private router: Router
@@ -50,33 +48,39 @@ export class ResultsComponent implements OnInit, OnDestroy {
     this.paramSubscription = this.route.params.subscribe((res: Params) => {
       console.log(res);
     });
-    this.createDbResponse = this.storeResponseService.createData.subscribe(
+
+    //need to move this into resolvers
+
+    this.createDbUHID = this.storeResponseService.createData.subscribe(
       (createDataResponse) => {
         this.createUHID = createDataResponse;
       }
     );
     this.databaseResponse = this.storeResponseService.dbResponse.subscribe(
       (res) => {
-        // console.log(res)
         this.viewResponse = res;
-        if (res.length !== 0) {
-          this.notFound = true;
-        } else {
-          this.notFound = false;
-        }
+        res.length !== 0 ? (this.notFound = true) : (this.notFound = false);
       }
     );
   }
 
   onGenerate() {
-    this.configService
-      .createPatientData(this.createUHID)
-      .subscribe()
+    this.configService.createPatientData(this.createUHID).subscribe((res) => {
+      console.log(res.UHID)
+      if (res) {
+        this.onRevisit();
+        this.storeResponseService.generatedDbResponse(res.UHID);
+      }
+    });
+  }
+
+  onRevisit() {
+    this.router.navigate(['/followup']);
   }
 
   ngOnDestroy(): void {
     this.paramSubscription.unsubscribe();
-    this.createDbResponse.unsubscribe();
+    this.createDbUHID.unsubscribe();
     this.databaseResponse.unsubscribe();
     this.notFound = false;
   }

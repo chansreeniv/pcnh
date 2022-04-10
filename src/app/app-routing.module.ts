@@ -6,7 +6,8 @@ import { SearchComponent } from './search/search.component';
 import { ResultsComponent } from './results/results.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuardService } from './services/auth-guard.service';
-import { AuthService } from './services/auth.service';
+import { FollowupComponent } from './followup/followup.component';
+
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
     { path: 'results/:id', component: ResultsComponent},
     {path: 'results', component: ResultsComponent}
   ]},
+  {path: 'followup', component: FollowupComponent},
   {path: '**', redirectTo: '/'},
   {path: 'not-found', component: PageNotFoundComponent}
 ]

@@ -16,7 +16,8 @@
                 <h5 class="card-text">Name: {{res.name}}</h5>
                 <h6 class="card-text">Age: {{res.age}}  Sex: {{res.sex}}</h6>
                 <p class="card-text">Last Visit:  {{res.createdAt}}</p>
-                <a [routerLink]="[res.UHID]" routerLinkActive="active" class="btn btn-primary">Revisit</a>
+                <!-- <a [routerLink]="[res.UHID]" routerLinkActive="active" class="btn btn-primary">Revisit</a> -->
+                <button class="btn btn-primary" (click)="onRevisit()">Revisit</button>
             </div>
         </ng-template>
         <!-- <router-outlet></router-outlet> -->

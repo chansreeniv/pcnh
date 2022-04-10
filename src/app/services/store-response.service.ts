@@ -3,24 +3,28 @@ import { Subject } from 'rxjs';
 import { PatientData } from '../assets/patient.interface';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class StoreResponseService {
   dbResponse = new Subject<PatientData[]>();
   createData = new Subject<PatientData>();
-  
-  constructor() { }
+  dbResponseUHID = new Subject<number | undefined>();
 
-  sortResponse(response: PatientData[]){
+  constructor() {}
+
+  sortResponse(response: PatientData[]) {
     this.dbResponse.next(response);
   }
 
-  createUHID(data: PatientData){
+  createUHID(data: PatientData) {
     this.createData.next(data);
+  }
+
+  generatedDbResponse(response: number | undefined) {
+    this.dbResponseUHID.next(response);
   }
 
   // viewSortedResponse(){
   //   return this.dbResponse
   // }
-
 }
