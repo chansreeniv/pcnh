@@ -1,7 +1,7 @@
 <form [formGroup]="followUpForm" (ngSubmit)="onSubmit()">
     <div class="form-group">
       <label for="UHID">UHID</label>
-      <input type="text" class="form-control" id="UHID"  placeholder={{this.UHID}} formControlName="UHID">
+      <input type="text" class="form-control" id="UHID"  placeholder={{this.UHID}} formControlName="UHID" value={{this.UHID}}>
     </div>
     <div class="form-group">
       <label for="consulting-doctor">Consulting Doctor</label>

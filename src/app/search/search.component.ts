@@ -29,14 +29,11 @@ export class SearchComponent implements OnInit {
       mobile: form.value.phone,
     };
     // this.configService.createPatientData(this.patientData).subscribe(patientRes=>{console.log(patientRes)})
-    this.searchPatientData(this.patientData)
-   
+    this.searchPatientData(this.patientData);
   }
 
-  searchPatientData(patientData: PatientData){
-    this.configService
-    .searchPatientData(patientData.name)
-    .subscribe((res) => {
+  searchPatientData(patientData: PatientData) {
+    this.configService.searchPatientData(patientData.name).subscribe((res) => {
       if (res.length === 0) {
         console.log('res ponse true');
         this.storeResponseService.createUHID(patientData);
@@ -44,8 +41,6 @@ export class SearchComponent implements OnInit {
         this.storeResponseService.sortResponse(res);
       }
     });
-  this.router.navigate(['search/results']);
-
+    this.router.navigate(['search/results']);
   }
-
 }
