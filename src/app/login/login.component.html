@@ -1,4 +1,4 @@
-<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+<!-- <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
   <div class="container">
     <h5 style="color: red" *ngIf="this.error">{{ this.error }}</h5>
     <label for="uname"><b>Username</b></label>
@@ -17,9 +17,44 @@
       placeholder="Enter Password"
       name="password"
       required
-    />
+    /> -->
 
-    <button type="submit" class="btn btn-primary">Login</button>
-    <button class="btn btn-primary" (click)="onRegister()">Register</button>
+<!-- <button type="submit" class="btn btn-primary">Login</button> -->
+<!-- <button type="submit" class="btn btn-outline-dark">Login</button>
+    <button class="btn btn-outline-dark" (click)="onRegister()">Register</button>
+  </div>
+</form> -->
+<form class="row g-3" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <div class="col-auto">
+    <label for="username" class="visually-hidden">User Name</label>
+    <input
+      type="text"
+      class="form-control"
+      id="username"
+      formControlName="username"
+      placeholder="Enter Username"
+      name="uname"
+      required
+    />
+  </div>
+  <div class="col-auto">
+    <label for="inputPassword2" class="visually-hidden">Password</label>
+    <input
+      type="password"
+      class="form-control"
+      id="inputPassword2"
+      formControlName="password"
+      placeholder="Enter Password"
+      name="password"
+      required
+    />
+  </div>
+  <div class="col-auto">
+    <button type="submit" class="btn btn-outline-dark" style="margin-top: 1em">
+      Login
+    </button>
+  </div>
+  <div class="col-auto">
+    <h5 style="color: red; margin-top: 1em;" *ngIf="this.error">{{ this.error }}</h5>
   </div>
 </form>

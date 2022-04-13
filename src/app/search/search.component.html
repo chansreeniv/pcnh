@@ -1,4 +1,4 @@
-<div class="card text-center">
+<!-- <div class="card text-center">
     <div class="card-body">
         <form (ngSubmit)="onSubmit(f)" #f="ngForm">
             <div class="row">
@@ -27,6 +27,39 @@
             </div>
         </form>
     </div>
+</div> -->
+<div class="card text-center">
+  <div class="card-body">
+<form class="row form-select-lg" (ngSubmit)="onSubmit(f)" #f="ngForm">
+        <div class="col-auto">
+          <label for="serach-bar" class="visually-hidden"
+          >UHID, Name or Phone Number</label
+          >
+          <input
+          type="text"
+          class="form-control form-control-lg"
+          id="search-bar"
+          ngModel
+          name="searchText"
+          placeholder="Search UHID, NAME or Phone No"
+        />
+      </div>
+      <div class="col-auto">
+        <button
+        type="submit"
+          class="btn btn-outline-dark form-control form-control-lg"
+        >
+          Search
+        </button>
+      </div>
+    </form>
+    <button
+    type="button"
+    class="btn btn-outline-dark form-control form-control-lg">
+    New UHID
+  </button>
 </div>
+  </div>
+
 
 <router-outlet></router-outlet>

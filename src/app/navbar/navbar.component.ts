@@ -17,14 +17,14 @@ export class NavbarComponent implements OnInit {
   ngOnInit(): void {
     // this.configService.getConfig().subscribe((response)=>{console.log(response)});
   }
+  LoginSuccess: boolean = false;
+  // onLogin(){
+  //   this.navLogin = "nav-link active";
+  // }
 
-  onLogin(){
-    this.navLogin = "nav-link active";
-  }
-
-  onSearch(){
-    this.navSearch = "nav-link active"
-  }
+  // onSearch(){
+  //   this.navSearch = "nav-link active"
+  // }
 
   onLogout(){
     this.authService.logout();
