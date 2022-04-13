@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { BehaviorSubject, Subject } from 'rxjs';
 import { PatientData } from '../assets/patient.interface';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { PatientData } from '../assets/patient.interface';
 export class StoreResponseService {
   dbResponse = new Subject<PatientData[]>();
   createData = new Subject<PatientData>();
-  dbResponseUHID = new Subject<number | undefined>();
+  dbResponseUHID = new BehaviorSubject<number | undefined>(2204)
 
   constructor() {}
 
@@ -21,7 +21,7 @@ export class StoreResponseService {
   }
 
   generatedDbResponse(response: number | undefined) {
-    this.dbResponseUHID.next(136181981);
+    this.dbResponseUHID.next(response);
   }
 
   // viewSortedResponse(){

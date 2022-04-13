@@ -16,8 +16,9 @@ export class FollowupComponent implements OnInit, OnDestroy {
   constructor(private storeResponseService: StoreResponseService, private configService: ConfigService) {}
 
   ngOnInit(): void {
+    this.UHIDsubscription = this.storeResponseService.dbResponseUHID.subscribe(res => this.UHID = res);
     this.followUpForm = new FormGroup({
-      UHID: new FormControl(null, Validators.required),
+      UHID: new FormControl(this.UHID, Validators.required),
       doctorName: new FormControl(null, Validators.required),
       provisionalDiagnosis: new FormControl(null),
     });

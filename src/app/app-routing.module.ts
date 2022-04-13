@@ -13,9 +13,10 @@ const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'search', canActivate:[AuthGuardService], component: SearchComponent,children:[
     { path: 'results/:id', component: ResultsComponent},
-    {path: 'results', component: ResultsComponent}
+    {path: 'results', component: ResultsComponent},
+    {path: 'followup', component: FollowupComponent},
   ]},
-  {path: 'followup', component: FollowupComponent},
+ 
   {path: '**', redirectTo: '/'},
   {path: 'not-found', component: PageNotFoundComponent}
 ]
