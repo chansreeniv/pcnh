@@ -6,7 +6,6 @@ import { SearchComponent } from './search/search.component';
 import { ResultsComponent } from './results/results.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuardService } from './services/auth-guard.service';
-import { FollowupComponent } from './followup/followup.component';
 
 
 const appRoutes: Routes = [
@@ -14,7 +13,6 @@ const appRoutes: Routes = [
   {path: 'search', canActivate:[AuthGuardService], component: SearchComponent,children:[
     { path: 'results/:id', component: ResultsComponent},
     {path: 'results', component: ResultsComponent},
-    {path: 'followup', component: FollowupComponent},
   ]},
  
   {path: '**', redirectTo: '/'},

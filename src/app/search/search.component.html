@@ -30,12 +30,21 @@
 </div> -->
 <div class="card text-center">
   <div class="card-body">
-<form class="row form-select-lg" (ngSubmit)="onSubmit(f)" #f="ngForm">
-        <div class="col-auto">
-          <label for="serach-bar" class="visually-hidden"
+    <form class="row form-select-lg" (ngSubmit)="onSubmit(f)" #f="ngForm">
+      <div class="col-auto">
+        <a
+          class="btn btn-outline-dark form-control form-control-lg"
+          data-bs-toggle="modal"
+          href="#RegisterModalToggle"
+          role="button"
+          >New UHID</a
+        >
+      </div>
+      <div class="col-auto">
+        <label for="serach-bar" class="visually-hidden"
           >UHID, Name or Phone Number</label
-          >
-          <input
+        >
+        <input
           type="text"
           class="form-control form-control-lg"
           id="search-bar"
@@ -46,20 +55,86 @@
       </div>
       <div class="col-auto">
         <button
-        type="submit"
+          type="submit"
           class="btn btn-outline-dark form-control form-control-lg"
         >
           Search
         </button>
       </div>
     </form>
-    <button
-    type="button"
-    class="btn btn-outline-dark form-control form-control-lg">
-    New UHID
-  </button>
-</div>
   </div>
-
-
+</div>
+<div
+  class="modal fade"
+  id="RegisterModalToggle"
+  aria-hidden="true"
+  aria-labelledby="RegisterModalToggleLabel"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="RegisterModalToggleLabel">Register New UHID</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <h1>Form content goes here</h1>
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-primary"
+          data-bs-target="#RegisterModalToggle2"
+          data-bs-toggle="modal"
+        >
+          Open second modal
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<div
+  class="modal fade"
+  id="RegisterModalToggle2"
+  aria-hidden="true"
+  aria-labelledby="RegisterModalToggleLabel2"
+  tabindex="-1"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="RegisterModalToggleLabel2">Modal 2</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        Hide this modal and show the first with the button below.
+      </div>
+      <div class="modal-footer">
+        <button
+          class="btn btn-primary"
+          data-bs-target="#RegisterModalToggle"
+          data-bs-toggle="modal"
+        >
+          Back
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<a
+  class="btn btn-primary"
+  data-bs-toggle="modal"
+  href="#RegisterModalToggle"
+  role="button"
+  >Open first modal</a
+>
 <router-outlet></router-outlet>

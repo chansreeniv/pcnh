@@ -12,8 +12,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './interceptors';
-import { FollowupComponent } from './followup/followup.component';
-
 
 
 @NgModule({
@@ -24,7 +22,6 @@ import { FollowupComponent } from './followup/followup.component';
     LoginComponent,
     ResultsComponent,
     PageNotFoundComponent,
-    FollowupComponent
   ],
   imports: [
     BrowserModule,
