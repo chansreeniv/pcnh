@@ -23,28 +23,25 @@
         <router-outlet></router-outlet>
 </div> -->
 <div class="row row-cols-1 row-cols-md-3 g-4">
+  <div *ngFor="let res of viewResponse">
     <div class="col">
       <div class="card h-100">
         <div class="card-body">
-            <h4 class="card-title">UHID: 22041001</h4>
-            <h5 class="card-text">Name: ABC</h5>
-            <h6 class="card-text">Age: 1  Sex: Male</h6>
-            <p class="card-text">Last Visit: Apr 14 21:33</p>
-            <!-- <a [routerLink]="[res.UHID]" routerLinkActive="active" class="btn btn-primary">Revisit</a> -->
-            <button class="btn btn-primary" (click)="onRevisit(22041001)">Revisit</button>
+          <h4 class="card-title">UHID: {{ res.UHID }}</h4>
+          <h5 class="card-text">Name: {{ res.name }}</h5>
+          <h6 class="card-text">Age: {{ res.age }} Sex: {{ res.sex }}</h6>
+          <p class="card-text">Last Visit: Apr 14 21:33</p>
+          <!-- <a [routerLink]="[res.UHID]" routerLinkActive="active" class="btn btn-primary">Revisit</a> -->
+          <a
+            class="btn btn-outline-dark"
+            data-bs-toggle="modal"
+            href="#RegisterModalToggle2"
+            role="button"
+            >VISIT</a
+          >
         </div>
       </div>
     </div>
-    <div class="col">
-        <div class="card h-100">
-          <div class="card-body">
-              <h4 class="card-title">UHID: 22041002</h4>
-              <h5 class="card-text">Name: PQR</h5>
-              <h6 class="card-text">Age: 1.5  Sex: Female</h6>
-              <p class="card-text">Last Visit: Apr 10 2:33</p>
-              <!-- <a [routerLink]="[res.UHID]" routerLinkActive="active" class="btn btn-primary">Revisit</a> -->
-              <button class="btn btn-primary" (click)="onRevisit(22041001)">Revisit</button>
-          </div>
-        </div>
-      </div>
   </div>
+</div>
+

@@ -6,11 +6,12 @@ import { SearchComponent } from './search/search.component';
 import { ResultsComponent } from './results/results.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { CreateNewFormComponent } from './search/create-new-form/create-new-form.component';
 
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'search', canActivate:[AuthGuardService], component: SearchComponent,children:[
+  {path: 'search',canActivate:[AuthGuardService], component: SearchComponent,children:[
     { path: 'results/:id', component: ResultsComponent},
     {path: 'results', component: ResultsComponent},
   ]},

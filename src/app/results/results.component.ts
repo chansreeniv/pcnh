@@ -5,6 +5,7 @@ import { PatientData } from '../assets/patient.interface';
 import { ConfigService } from '../services/config.service';
 import { StoreResponseService } from '../services/store-response.service';
 
+
 @Component({
   selector: 'app-results',
   templateUrl: './results.component.html',
@@ -18,6 +19,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
   generatedUHID: string = '';
   createUHID!: PatientData;
   viewResponse!: PatientData[];
+  
 
   // responseData = [{
   //   "uhid":"20221001",
@@ -75,7 +77,7 @@ export class ResultsComponent implements OnInit, OnDestroy {
   }
 
   onRevisit(UHID: number | undefined) {
-    this.storeResponseService.generatedDbResponse(UHID);
+    // this.storeResponseService.generatedDbResponse(UHID);
     this.router.navigate(['search/followup']);
   }
 

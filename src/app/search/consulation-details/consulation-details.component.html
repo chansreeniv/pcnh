@@ -1,7 +1,7 @@
 <form class="row g-3">
     <div class="col-md-6">
-      <label for="inputEmail4" class="form-label">UHID</label>
-      <input type="text" class="form-control" id="inputEmail4">
+      <label for="UHID" class="form-label">{{UHID}}</label>
+      <input type="text" class="form-control" id="UHID" value="{{UHID}}">
     </div>
     <div class="col-md-6">
       <label for="inputPassword4" class="form-label">Consulting Doctor</label>
@@ -11,7 +11,10 @@
       <label for="inputAddress" class="form-label">Provisional Diagnosis</label>
       <input type="text" class="form-control" id="inputAddress" placeholder="Diagnosis">
     </div>
-    <div class="col-md-3">
-      <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-outline-dark">Submit</button>
+      <button class="btn btn-outline-dark" data-bs-target="#RegisterModalToggle" data-bs-toggle="modal">
+        Back
+      </button>
+    </div> 
   </form>

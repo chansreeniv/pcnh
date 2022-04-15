@@ -12,7 +12,6 @@ import { StoreResponseService } from '../services/store-response.service';
 })
 export class SearchComponent implements OnInit {
   search: boolean = true;
-  patientData!: PatientData;
   constructor(
     private router: Router,
     private configService: ConfigService,
@@ -22,24 +21,14 @@ export class SearchComponent implements OnInit {
   ngOnInit(): void {}
   onSubmit(form: NgForm) {
     console.log(form.value);
-    this.patientData = {
-      name: form.value.firstname,
-      age: form.value.age,
-      sex: form.value.sex,
-      mobile: form.value.phone,
-    };
     // this.configService.createPatientData(this.patientData).subscribe(patientRes=>{console.log(patientRes)})
-    this.searchPatientData(this.patientData);
+    this.searchPatientData(form.value.searchText);
   }
 
-  searchPatientData(patientData: PatientData) {
-    this.configService.searchPatientData(patientData.name).subscribe((res) => {
-      if (res.length === 0) {
-        console.log('res ponse true');
-        this.storeResponseService.createUHID(patientData);
-      } else {
-        this.storeResponseService.sortResponse(res);
-      }
+  searchPatientData(patientData: string) {
+    this.configService.searchPatientData(patientData).subscribe((res) => {
+      console.log(res)
+      this.storeResponseService.sortResponse(res);
     });
     this.router.navigate(['search/results']);
   }
