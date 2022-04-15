@@ -83,15 +83,16 @@
         ></button>
       </div>
       <div class="modal-body">
-        <h1>Form content goes here</h1>
+        <app-create-new-form></app-create-new-form>
       </div>
       <div class="modal-footer">
         <button
           class="btn btn-primary"
           data-bs-target="#RegisterModalToggle2"
           data-bs-toggle="modal"
+          hidden
         >
-          Open second modal
+         Consultation Details
         </button>
       </div>
     </div>
@@ -107,7 +108,7 @@
   <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="RegisterModalToggleLabel2">Modal 2</h5>
+        <h5 class="modal-title" id="RegisterModalToggleLabel2">Consultation</h5>
         <button
           type="button"
           class="btn-close"
@@ -116,7 +117,7 @@
         ></button>
       </div>
       <div class="modal-body">
-        Hide this modal and show the first with the button below.
+        <app-consulation-details></app-consulation-details>
       </div>
       <div class="modal-footer">
         <button
@@ -130,11 +131,11 @@
     </div>
   </div>
 </div>
-<a
+<!-- <a
   class="btn btn-primary"
   data-bs-toggle="modal"
   href="#RegisterModalToggle"
   role="button"
   >Open first modal</a
->
+> -->
 <router-outlet></router-outlet>

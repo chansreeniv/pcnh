@@ -12,6 +12,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './interceptors';
+import { CreateNewFormComponent } from './search/create-new-form/create-new-form.component';
+import { ConsulationDetailsComponent } from './search/consulation-details/consulation-details.component';
 
 
 @NgModule({
@@ -22,6 +24,8 @@ import { httpInterceptorProviders } from './interceptors';
     LoginComponent,
     ResultsComponent,
     PageNotFoundComponent,
+    CreateNewFormComponent,
+    ConsulationDetailsComponent,
   ],
   imports: [
     BrowserModule,

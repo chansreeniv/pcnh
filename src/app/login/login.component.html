@@ -24,37 +24,90 @@
     <button class="btn btn-outline-dark" (click)="onRegister()">Register</button>
   </div>
 </form> -->
-<form class="row g-3" [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
-  <div class="col-auto">
-    <label for="username" class="visually-hidden">User Name</label>
-    <input
-      type="text"
-      class="form-control"
-      id="username"
-      formControlName="username"
-      placeholder="Enter Username"
-      name="uname"
-      required
-    />
+
+<div class="row">
+  <div class="col-md-4 offset-md-4">
+    <form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+      <label for="username" class="visually-hidden">User Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        formControlName="username"
+        placeholder="Enter Username"
+        name="uname"
+        required
+      />
+      <label for="inputPassword2" class="visually-hidden">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="inputPassword2"
+        formControlName="password"
+        placeholder="Enter Password"
+        name="password"
+        required
+      />
+      <button type="submit" class="btn btn-outline-dark col-12 mt-2">
+        Login
+      </button>
+
+      <div class="col-auto">
+        <h5 style="color: red; margin-left: 1em" *ngIf="this.error">
+          {{ this.error }}
+        </h5>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- <form
+  class="row justify-content-md-center"
+  [formGroup]="signUpForm"
+  (ngSubmit)="onSubmit()"
+>
+  <div class="row">
+    <div class="col-lg-3">
+      <label for="username" class="visually-hidden">User Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        formControlName="username"
+        placeholder="Enter Username"
+        name="uname"
+        required
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-3">
+      <label for="inputPassword2" class="visually-hidden">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="inputPassword2"
+        formControlName="password"
+        placeholder="Enter Password"
+        name="password"
+        required
+      />
+    </div>
+  </div>
+  <div class="row">
+    <div class="row col-lg-3">
+      <button
+        type="submit"
+        class="btn btn-outline-dark"
+        style="margin-top: 1em"
+      >
+        Login
+      </button>
+    </div>
   </div>
   <div class="col-auto">
-    <label for="inputPassword2" class="visually-hidden">Password</label>
-    <input
-      type="password"
-      class="form-control"
-      id="inputPassword2"
-      formControlName="password"
-      placeholder="Enter Password"
-      name="password"
-      required
-    />
+    <h5 style="color: red; margin-top: 1em" *ngIf="this.error">
+      {{ this.error }}
+    </h5>
   </div>
-  <div class="col-auto">
-    <button type="submit" class="btn btn-outline-dark" style="margin-top: 1em">
-      Login
-    </button>
-  </div>
-  <div class="col-auto">
-    <h5 style="color: red; margin-top: 1em;" *ngIf="this.error">{{ this.error }}</h5>
-  </div>
-</form>
+</form> -->
