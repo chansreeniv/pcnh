@@ -6,7 +6,6 @@ import { environment } from 'src/environments/environment';
 import { ApiPaths } from '../assets/api-path';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
-import { StoreResponseService } from './store-response.service';
 
 @Injectable({
   providedIn: 'root',
@@ -14,10 +13,7 @@ import { StoreResponseService } from './store-response.service';
 export class ConfigService {
   patientData!: PatientData;
 
-  constructor(
-    private http: HttpClient,
-    private router: Router
-  ) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   login(username: string, password: string) {
     return this.http
@@ -56,9 +52,15 @@ export class ConfigService {
     );
   }
 
-  searchPatientData(patientName: string) {
+  // searchPatientData(patientName: string) {
+  //   return this.http.get<PatientData[]>(
+  //     `${environment.baseUrl}${ApiPaths.patients}${patientName}`
+  //   );
+  // }
+
+  searchPatientData(patientProfile: string) {
     return this.http.get<PatientData[]>(
-      `${environment.baseUrl}${ApiPaths.patients}${patientName}`
+      `${environment.baseUrl}${ApiPaths.search}${patientProfile}`
     );
   }
 }
