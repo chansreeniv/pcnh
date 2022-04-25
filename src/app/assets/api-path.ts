@@ -2,5 +2,6 @@ export enum ApiPaths{
     login = '/admins/login',
     patients = '/patients/',
     register = '/admins/register',
-    search = '/patients/search/'
+    search = '/patients/search/',
+    visits = 'vists/'
 }

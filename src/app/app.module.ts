@@ -14,6 +14,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { httpInterceptorProviders } from './interceptors';
 import { CreateNewFormComponent } from './search/create-new-form/create-new-form.component';
 import { ConsulationDetailsComponent } from './search/consulation-details/consulation-details.component';
+import { DetailsComponent } from './results/details/details.component';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import { ConsulationDetailsComponent } from './search/consulation-details/consul
     PageNotFoundComponent,
     CreateNewFormComponent,
     ConsulationDetailsComponent,
+    DetailsComponent,
   ],
   imports: [
     BrowserModule,

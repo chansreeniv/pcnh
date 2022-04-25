@@ -28,7 +28,7 @@ export class SearchComponent implements OnInit {
   searchPatientData(patientData: string) {
     this.configService.searchPatientData(patientData).subscribe((res) => {
       console.log(res)
-      this.storeResponseService.sortResponse(res);
+      this.storeResponseService.sortDatabaseResponse(res);
     });
     this.router.navigate(['search/results']);
   }

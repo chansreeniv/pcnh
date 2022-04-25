@@ -8,11 +8,12 @@ import { PatientData } from '../assets/patient.interface';
 export class StoreResponseService {
   dbResponse = new Subject<PatientData[]>();
   createData = new Subject<PatientData>();
-  dbResponseUHID = new BehaviorSubject<number | undefined>(2204)
+  dbResponseUHID = new BehaviorSubject<number | undefined>(2204);
+  consultationIdValue = new BehaviorSubject<string | undefined>("pcnhdataerror");
 
   constructor() {}
 
-  sortResponse(response: PatientData[]) {
+  sortDatabaseResponse(response: PatientData[]) {
     this.dbResponse.next(response);
   }
 
@@ -20,8 +21,12 @@ export class StoreResponseService {
     this.createData.next(data);
   }
 
-  generatedDbResponse(response: number | undefined) {
+  generatedDbResponseUHID(response: number | undefined) {
     this.dbResponseUHID.next(response);
+  }
+
+  consultationIdFunction(id: string | undefined){
+    this.consultationIdValue.next(id);
   }
 
   // viewSortedResponse(){

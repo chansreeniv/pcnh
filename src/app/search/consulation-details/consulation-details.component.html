@@ -1,18 +1,18 @@
-<form class="row g-3">
+<form class="row g-3" (ngSubmit)="onConsultation(f)" #f="ngForm">
     <div class="col-md-6">
       <label for="UHID" class="form-label">{{UHID}}</label>
       <input type="text" class="form-control" id="UHID" value="{{UHID}}">
     </div>
     <div class="col-md-6">
       <label for="inputState" class="form-label">Doctor</label>
-      <select id="inputState" class="form-select" ngModel name="sex">
+      <select id="inputState" class="form-select" ngModel name="doctor">
         <option selected>Padmanabha</option>
         <option>Dwarkanath</option>
       </select>
     </div>
     <div class="col-12">
       <label for="inputAddress" class="form-label">Provisional Diagnosis</label>
-      <input type="text" class="form-control" id="inputAddress" placeholder="Diagnosis">
+      <input type="text" class="form-control" ngModel name="diagnosis" id="inputAddress" placeholder="Diagnosis">
     </div>
     <div class="modal-footer">
       <button type="submit" class="btn btn-outline-dark">Submit</button>

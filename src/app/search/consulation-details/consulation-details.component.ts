@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { DiagnosisData } from 'src/app/assets/diagnosis.interface';
+import { ConfigService } from 'src/app/services/config.service';
 import { StoreResponseService } from 'src/app/services/store-response.service';
 
 @Component({
@@ -8,11 +11,25 @@ import { StoreResponseService } from 'src/app/services/store-response.service';
 })
 export class ConsulationDetailsComponent implements OnInit {
   UHID!:number | undefined;
+  consulatationData!: DiagnosisData;
+  id: string | undefined;
 
-  constructor(private storeResponseService: StoreResponseService) { }
+
+  constructor(private storeResponseService: StoreResponseService, private configService: ConfigService) { }
 
   ngOnInit(): void {
-    this.storeResponseService.dbResponseUHID.subscribe(res=> this.UHID = res )
+    this.storeResponseService.dbResponseUHID.subscribe(res=> this.UHID = res)
+    this.storeResponseService.consultationIdValue.subscribe(res=> this.id = res);
+  }
+
+  onConsultation(form: NgForm){
+    this.consulatationData = {
+      consltdoctor: form.value.doctor,
+      providiagnosis: form.value.diagnosis
+    }
+
+    this.configService.diagnosis(this.id,this.consulatationData).subscribe(res=> console.log(res))
+    
   }
 
 }

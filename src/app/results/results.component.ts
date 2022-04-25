@@ -66,19 +66,23 @@ export class ResultsComponent implements OnInit, OnDestroy {
     );
   }
 
-  onGenerate() {
-    this.configService.createPatientData(this.createUHID).subscribe((res) => {
-      console.log(res.UHID)
-      if (res) {
-        this.onRevisit(res.UHID);
-        // this.storeResponseService.generatedDbResponse(res.UHID);
-      }
-    });
-  }
+  // onGenerate() {
+  //   this.configService.createPatientData(this.createUHID).subscribe((res) => {
+  //     console.log(res.UHID)
+  //     if (res) {
+  //       this.onRevisit(res.UHID);
+  //       // this.storeResponseService.generatedDbResponse(res.UHID);
+  //     }
+  //   });
+  // }
 
-  onRevisit(UHID: number | undefined) {
-    // this.storeResponseService.generatedDbResponse(UHID);
-    this.router.navigate(['search/followup']);
+  // onRevisit(UHID: number | undefined) {
+  //   // this.storeResponseService.generatedDbResponse(UHID);
+  //   this.router.navigate(['search/followup']);
+  // }
+
+  onVisit(id: string | undefined){
+    this.storeResponseService.consultationIdFunction(id);
   }
 
   ngOnDestroy(): void {

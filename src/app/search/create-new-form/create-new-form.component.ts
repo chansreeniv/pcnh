@@ -26,7 +26,7 @@ export class CreateNewFormComponent implements OnInit {
     }
     this.configService.createPatientData(this.patientData).subscribe(res=>{
       console.log(res);
-      this.storeResponseService.generatedDbResponse(res.UHID);
+      this.storeResponseService.generatedDbResponseUHID(res.UHID);
     })
   }
 

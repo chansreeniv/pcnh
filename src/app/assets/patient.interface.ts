@@ -1,4 +1,7 @@
+import { DiagnosisData } from "./diagnosis.interface"
+
 export interface PatientData {
+    diagnosis?: DiagnosisData[],
     UHID?: number,
     name: string,
     mobile?: number,

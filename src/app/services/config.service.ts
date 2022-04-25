@@ -6,6 +6,7 @@ import { environment } from 'src/environments/environment';
 import { ApiPaths } from '../assets/api-path';
 import { tap } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { DiagnosisData, visitDetailsData } from '../assets/diagnosis.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -62,5 +63,19 @@ export class ConfigService {
     return this.http.get<PatientData[]>(
       `${environment.baseUrl}${ApiPaths.search}${patientProfile}`
     );
+  }
+
+
+  //diagnosis services
+  diagnosis(id: string | undefined, consulatationData: DiagnosisData){
+    return this.http.put<PatientData>(`${environment.baseUrl}${ApiPaths.patients}${id}`,{
+      consltdoctor: consulatationData.consltdoctor,
+      providiagnosis: consulatationData.providiagnosis
+    });
+  }
+
+  //visit details 
+  visits(UHID: number | undefined){
+    return this.http.get<visitDetailsData>(`${environment.baseUrl}${ApiPaths.patients}${ApiPaths.visits}${UHID}`)
   }
 }
