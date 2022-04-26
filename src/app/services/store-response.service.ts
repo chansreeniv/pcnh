@@ -10,6 +10,7 @@ export class StoreResponseService {
   createData = new Subject<PatientData>();
   dbResponseUHID = new BehaviorSubject<number | undefined>(2204);
   consultationIdValue = new BehaviorSubject<string | undefined>("pcnhdataerror");
+  LoginSuccess = new BehaviorSubject<boolean>(false);
 
   constructor() {}
 
@@ -29,7 +30,6 @@ export class StoreResponseService {
     this.consultationIdValue.next(id);
   }
 
-  // viewSortedResponse(){
-  //   return this.dbResponse
-  // }
+  //login data store
+
 }

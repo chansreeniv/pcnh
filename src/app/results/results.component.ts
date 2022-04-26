@@ -81,9 +81,10 @@ export class ResultsComponent implements OnInit, OnDestroy {
   //   this.router.navigate(['search/followup']);
   // }
 
-  onVisit(id: string | undefined){
+  onVisit(id: string | undefined, UHID: number | undefined){
     this.storeResponseService.consultationIdFunction(id);
-  }
+    this.storeResponseService.generatedDbResponseUHID(UHID);
+    }
 
   ngOnDestroy(): void {
     this.paramSubscription.unsubscribe();

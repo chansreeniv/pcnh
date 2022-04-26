@@ -40,7 +40,7 @@ export class ConsulationDetailsComponent implements OnInit {
       .diagnosis(this.id, this.consulatationData)
       .subscribe((res) => {
         if (res) {
-          this.router.navigate(['search/results']);
+          
         }
       });
   }

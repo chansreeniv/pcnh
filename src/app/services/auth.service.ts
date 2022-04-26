@@ -5,8 +5,10 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn: boolean= false;
+  loggedIn: boolean= true;
+  LoginSuccess: boolean = false;
   constructor(private router: Router) { }
+
 
   login(){
     this.loggedIn = true;
